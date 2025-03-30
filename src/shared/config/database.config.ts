@@ -7,7 +7,7 @@ export default registerAs('database', () => ({
   port: parseInt(process.env.DATABASE_PORT, 10),
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
-  synchronize: process.env.DATABASE_SYNC === 'true' ? false : false,
+  database_name: process.env.DATABASE_NAME,
+  synchronize: process.env.DATABASE_SYNC === 'true',
   logging: Boolean(process.env.DATABASE_LOGGING) || true,
 }))

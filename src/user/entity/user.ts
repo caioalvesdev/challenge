@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm'
-import { Company } from 'src/company/entity'
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
@@ -24,8 +23,8 @@ export class User {
   @Column({ name: 'role' })
   role: string
 
-  @Field(() => Company, { nullable: true })
-  @ManyToOne(() => Company, (company) => company.users)
-  @JoinColumn({ name: 'company_id' })
-  company: Company
+  // @Field(() => Company, { nullable: true })
+  // @ManyToOne(() => Company, (company) => company.users)
+  // @JoinColumn({ name: 'company_id' })
+  // company: Company
 }

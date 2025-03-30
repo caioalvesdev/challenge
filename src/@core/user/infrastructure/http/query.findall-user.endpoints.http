@@ -1,0 +1,7 @@
+## @ts-check
+POST http://localhost:3334/graphql
+Content-Type: application/json
+
+{
+  "query": "query { findAllUser { id name email role company { id name } } }"
+}

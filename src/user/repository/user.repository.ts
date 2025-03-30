@@ -10,7 +10,7 @@ export class UserRepository {
   async findById(id: string): Promise<User> {
     return this.userRepository.findOne({
       where: { id },
-      relations: ['company'],
+      // relations: ['company'],
     })
   }
 }

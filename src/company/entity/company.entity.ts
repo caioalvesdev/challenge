@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
 import { Content } from 'src/content/entity'
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
+// import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
 
 @ObjectType()
 @Entity({ name: 'companies' })

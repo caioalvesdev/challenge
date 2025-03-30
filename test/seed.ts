@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 import { DataSource } from 'typeorm'
-import { User } from 'src/user/entity'
 import { Company } from 'src/company/entity'
-import { AppDataSource } from 'src/database/data-source.database'
+// import { AppDataSource } from 'src/database/data-source.database'
 import { Content } from 'src/content/entity'
+import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
+import { AppDataSource } from 'src/shared/config/typeorm.config'
+import * as process from 'node:process'
 
 export const seedDatabase = async (dataSource: DataSource) => {
   const queryRunner = dataSource.createQueryRunner()
@@ -17,7 +19,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
     queryRunner.manager.save(company2),
   ])
 
-  const user1 = queryRunner.manager.create(User, {
+  const user1 = queryRunner.manager.create(UserEntity, {
     id: '18c37ce2-cd34-4305-9ca4-c15fc736beac',
     name: 'John Doe',
     email: 'john@example.com',
@@ -25,7 +27,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
     password: 'hashed-password',
     company: createdCompany1,
   })
-  const user2 = queryRunner.manager.create(User, {
+  const user2 = queryRunner.manager.create(UserEntity, {
     name: 'Foo Bar',
     email: 'foo@example.com',
     role: 'admin',
