@@ -9,7 +9,7 @@ import { UserModule } from '@core/user/user.module'
 import { CompanyModule } from '@core/company/company.module'
 import { ContentModule } from '@core/content/content.module'
 import { JwtModule } from '@nestjs/jwt'
-import { AuthenticationGuard } from '@core/auth/guards/authentication.guard'
+import { AuthenticationGuard } from '@core/auth/presentation/guards/authentication.guard'
 import { APP_GUARD } from '@nestjs/core'
 
 @Module({
