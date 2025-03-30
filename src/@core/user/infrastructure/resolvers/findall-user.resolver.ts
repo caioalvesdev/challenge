@@ -2,9 +2,9 @@ import { Args, Query, Resolver } from '@nestjs/graphql'
 import {
   InputFindAllUserDto as Input,
   OutputFindAllUserDto as Output,
-} from 'src/@core/user/application/dtos/findall-user.dto'
-import { FindAllUserUseCase } from 'src/@core/user/application/usecases/findall-user.usecase'
-import { IResolver } from 'src/shared/presentation/resolvers/interfaces/resolver.interface'
+} from '@core/user/application/dtos/findall-user.dto'
+import { FindAllUserUseCase } from '@core/user/application/usecases/findall-user.usecase'
+import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'
 
 @Resolver()
 export class FindAllUserResolver implements IResolver<Input, Output[]> {

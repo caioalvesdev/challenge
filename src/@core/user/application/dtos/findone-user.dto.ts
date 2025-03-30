@@ -1,6 +1,6 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql'
 import { IsEmail, IsNotEmpty } from 'class-validator'
-import { OutputFindAllUserDto } from 'src/@core/user/application/dtos/findall-user.dto'
+import { OutputFindAllUserDto } from '@core/user/application/dtos/findall-user.dto'
 
 @InputType()
 export class InputFindOneUserDto {

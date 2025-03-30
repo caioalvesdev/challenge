@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Company } from 'src/company/entity'
+import { Company } from 'src/company/entities'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Company])],

@@ -8,7 +8,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm'
-import { Company } from 'src/company/entity'
+import { Company } from 'src/company/entities'
 
 @Entity('contents')
 export class Content {

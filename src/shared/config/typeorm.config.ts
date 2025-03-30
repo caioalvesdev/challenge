@@ -1,7 +1,7 @@
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm'
-import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
-import { Company } from 'src/company/entity'
+import { UserEntity } from '@core/user/domain/entities/user.entity'
+import { Company } from 'src/company/entities'
 import { Content } from 'src/content/entity'
 import { DataSource } from 'typeorm'
 

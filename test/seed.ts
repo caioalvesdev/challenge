@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import { DataSource } from 'typeorm'
-import { Company } from 'src/company/entity'
+import { Company } from 'src/company/entities'
 // import { AppDataSource } from 'src/database/data-source.database'
 import { Content } from 'src/content/entity'
-import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
-import { AppDataSource } from 'src/shared/config/typeorm.config'
+import { UserEntity } from '@core/user/domain/entities/user.entity'
+import { AppDataSource } from '@shared/config/typeorm.config'
 import * as process from 'node:process'
 
 export const seedDatabase = async (dataSource: DataSource) => {

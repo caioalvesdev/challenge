@@ -1,5 +1,5 @@
-import appConfig from 'src/shared/config/app.config'
-import databaseConfig from 'src/shared/config/database.config'
+import appConfig from '@shared/config/app.config'
+import databaseConfig from '@shared/config/database.config'
 import enviromentValidationSchema from './env.validation'
 import { ConfigModuleOptions } from '@nestjs/config'
 

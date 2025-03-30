@@ -18,5 +18,9 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
+    "paths": {
+      "@core/*": ["src/@core/*"],
+      "@shared/*": ["src/shared/*"]
+    }
   }
 }

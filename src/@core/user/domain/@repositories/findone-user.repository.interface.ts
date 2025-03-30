@@ -1,7 +1,7 @@
 import {
   InputFindOneUserDto,
   OutputFindOneUserDto,
-} from 'src/@core/user/application/dtos/findone-user.dto'
+} from '@core/user/application/dtos/findone-user.dto'
 
 export interface IFindOneUserRepository {
   findOne(input: IFindOneUserRepository.Input): Promise<IFindOneUserRepository.Output>

@@ -7,8 +7,8 @@ enum SortDirection {
 }
 
 registerEnumType(SortDirection, {
-  name: 'SortDirection', // Nome do enum no esquema GraphQL
-  description: 'Define the sorting direction (ASC or DESC)', // Descrição opcional
+  name: 'SortDirection',
+  description: 'Define the sorting direction (ASC or DESC)',
 })
 
 @InputType()

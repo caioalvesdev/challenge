@@ -1,8 +1,8 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { IFindAllUserRepository } from 'src/@core/user/domain/@repositories/findall-user.repository.interface'
-import { IFindOneUserRepository } from 'src/@core/user/domain/@repositories/findone-user.repository.interface'
-import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
+import { IFindAllUserRepository } from '@core/user/domain/@repositories/findall-user.repository.interface'
+import { IFindOneUserRepository } from '@core/user/domain/@repositories/findone-user.repository.interface'
+import { UserEntity } from '@core/user/domain/entities/user.entity'
 import { Repository } from 'typeorm'
 
 @Injectable()
