@@ -1,3 +1,4 @@
+import { CompanyEntity } from '@core/company/domain/entities/company.entity'
 import {
   Entity,
   Column,
@@ -8,7 +9,6 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm'
-import { Company } from 'src/company/entities'
 
 @Entity('contents')
 export class Content {
@@ -42,7 +42,7 @@ export class Content {
   @DeleteDateColumn()
   deleted_at: Date | null
 
-  @ManyToOne(() => Company, (company) => company.contents)
+  @ManyToOne(() => CompanyEntity, (company) => company.contents)
   @JoinColumn({ name: 'company_id' })
-  company: Company
+  company: CompanyEntity
 }

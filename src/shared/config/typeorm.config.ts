@@ -1,8 +1,5 @@
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm'
-import { UserEntity } from '@core/user/domain/entities/user.entity'
-import { Company } from 'src/company/entities'
-import { Content } from 'src/content/entity'
 import { DataSource } from 'typeorm'
 
 type DatabaseConectionOptions = 'mysql' | 'mariadb' | 'postgres' | 'sqlite' | 'oracle'
@@ -16,7 +13,7 @@ export const buildTypeOrmConfig = async (
   username: configService.get<string>('database.username'),
   password: configService.get<string>('database.password'),
   database: configService.get<string>('database.database_name'),
-  entities: [UserEntity, Content, Company],
+  entities: [__dirname + '/../../**/*.entity.{ts,js}'],
   migrations: [__dirname + '/migration/*.{ts,js}'],
   synchronize: configService.get<boolean>('database.sync'),
   logging: configService.get<boolean>('database.logging'),
@@ -35,7 +32,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DATABASE_USERNAME || 'postgres',
   password: process.env.DATABASE_PASSWORD || 'postgres',
   database: process.env.DATABASE_NAME || 'challenge',
-  entities: [UserEntity, Content, Company],
+  entities: [__dirname + '/../../**/*.entity.{ts,js}'],
   migrations: [__dirname + '/migration/*.{ts,js}'],
   synchronize: true, // Certifique-se de desativar em produção
   logging: true,

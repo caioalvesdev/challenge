@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
 import { DataSource } from 'typeorm'
-import { Company } from 'src/company/entities'
 // import { AppDataSource } from 'src/database/data-source.database'
 import { Content } from 'src/content/entity'
 import { UserEntity } from '@core/user/domain/entities/user.entity'
 import { AppDataSource } from '@shared/config/typeorm.config'
 import * as process from 'node:process'
+import { CompanyEntity } from '@core/company/domain/entities/company.entity'
 
 export const seedDatabase = async (dataSource: DataSource) => {
   const queryRunner = dataSource.createQueryRunner()
   await queryRunner.connect()
 
-  const company1 = queryRunner.manager.create(Company, { name: 'Company A' })
-  const company2 = queryRunner.manager.create(Company, { name: 'Company B' })
+  const company1 = queryRunner.manager.create(CompanyEntity, { name: 'Company A' })
+  const company2 = queryRunner.manager.create(CompanyEntity, { name: 'Company B' })
 
   const [createdCompany1, createdCompany2] = await Promise.all([
     queryRunner.manager.save(company1),

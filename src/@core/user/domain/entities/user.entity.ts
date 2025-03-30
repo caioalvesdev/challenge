@@ -1,3 +1,4 @@
+import { CompanyEntity } from '@core/company/domain/entities/company.entity'
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -9,7 +10,6 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 // import { Company } from 'src/company/entity'
-import { Company } from 'src/company/entities'
 
 @Entity({ name: 'users' })
 export class UserEntity {
@@ -35,7 +35,7 @@ export class UserEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date
 
-  @ManyToOne(() => Company, (company) => company.users)
+  @ManyToOne(() => CompanyEntity, (company) => company.users)
   @JoinColumn({ name: 'company_id' })
-  company: Company
+  company: CompanyEntity
 }

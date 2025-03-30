@@ -5,7 +5,7 @@ import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
 // import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
 
 @Entity({ name: 'companies' })
-export class Company {
+export class CompanyEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn('uuid')
   public readonly id: string
