@@ -8,15 +8,25 @@ import { graphQLConfig } from '@shared/config/graphql.config'
 import { UserModule } from '@core/user/user.module'
 import { CompanyModule } from '@core/company/company.module'
 import { ContentModule } from '@core/content/content.module'
+import { JwtModule } from '@nestjs/jwt'
+import { AuthenticationGuard } from '@core/auth/guards/authentication.guard'
+import { APP_GUARD } from '@nestjs/core'
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     GraphQLModule.forRoot(graphQLConfig),
     ConfigModule.forRoot(configModuleOptions),
+    JwtModule.register({}),
     ContentModule,
     UserModule,
     CompanyModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthenticationGuard,
+    },
   ],
 })
 export class AppModule {}

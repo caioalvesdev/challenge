@@ -6,9 +6,7 @@ import { UserEntity } from '@core/user/domain/entities/user.entity'
 import { Repository } from 'typeorm'
 
 @Injectable()
-export class FindAllUserTypeOrmRepository
-  implements IFindAllUserRepository, IFindOneUserRepository
-{
+export class UserTypeOrmRepository implements IFindAllUserRepository, IFindOneUserRepository {
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
@@ -34,7 +32,7 @@ export class FindAllUserTypeOrmRepository
   ): Promise<IFindOneUserRepository.Output> {
     try {
       return this.userRepository.findOne({
-        where: { email: input.email },
+        where: { email: input.email, id: input?.id },
         relations: ['company'],
       })
     } catch (error) {
