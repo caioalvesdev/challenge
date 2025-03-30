@@ -17,16 +17,16 @@ services:
   nestjs-app:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     container_name: nestjs-app
     ports:
       - ${APP_PORT}:3000
     volumes:
-      - .:/app
+      - ./src:/app/src
     depends_on:
       - db
       - redis
     env_file:
       - .env
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
