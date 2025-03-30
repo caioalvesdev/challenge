@@ -1,18 +1,22 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
-import { User } from 'src/user/entity'
 import { Content } from 'src/content/entity'
+import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { UserEntity } from 'src/@core/user/domain/entities/user.entity'
 
-@Entity('companies')
+@ObjectType()
+@Entity({ name: 'companies' })
 export class Company {
+  @Field(() => ID)
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  public readonly id: string
 
-  @Column()
-  name: string
+  @Field(() => String)
+  @Column({ name: 'name' })
+  public readonly name: string
 
-  @OneToMany(() => User, (user) => user.company)
-  users: User[]
+  @OneToMany(() => UserEntity, (user) => user.company)
+  public readonly users: UserEntity[]
 
   @OneToMany(() => Content, (content) => content.company)
-  contents: Content[]
+  public readonly contents: Content[]
 }

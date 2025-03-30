@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProvisionDto {
+  id: String!
+  title: String!
+  type: String!
+  description: String
+  cover: String
+  url: String!
+  created_at: DateTime!
+  allow_download: Boolean!
+  is_embeddable: Boolean!
+  format: String
+  bytes: Int!
+  total_likes: Int!
+  metadata: JSONObject!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+type Company {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  provision(content_id: String!): ProvisionDto!
+}
