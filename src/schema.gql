@@ -33,6 +33,49 @@ type Company {
   name: String!
 }
 
+type Companyy {
+  id: String!
+  name: String!
+}
+
+type OutputFindAllUserDto {
+  id: String!
+  name: String!
+  email: String!
+  role: String!
+  company: Companyy
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type OutputFindOneUserDto {
+  id: String!
+  name: String!
+  email: String!
+  role: String!
+  company: Companyy
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type Query {
   provision(content_id: String!): ProvisionDto!
+  users(input: InputFindAllUserDto): [OutputFindAllUserDto!]!
+  user(input: InputFindOneUserDto!): OutputFindOneUserDto!
+}
+
+input InputFindAllUserDto {
+  page: Float = 1
+  limit: Float = 10
+  sortDirection: SortDirection = ASC
+}
+
+"""Define the sorting direction (ASC or DESC)"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+input InputFindOneUserDto {
+  email: String!
 }
