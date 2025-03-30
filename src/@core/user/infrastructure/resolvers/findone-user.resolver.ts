@@ -6,7 +6,7 @@ import {
 import { FindOneUserUseCase } from '@core/user/application/usecases/findone-user.usecase'
 import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'
 
-@Resolver()
+@Resolver(() => Input)
 export class FindOneUserResolver implements IResolver<Input, Output> {
   constructor(private readonly findOneUserUseCase: FindOneUserUseCase) {}
 

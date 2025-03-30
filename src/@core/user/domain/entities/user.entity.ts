@@ -15,27 +15,27 @@ import {
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   @PrimaryColumn()
-  id: string
+  public readonly id: string
 
   @Column({ name: 'name' })
-  name: string
+  public readonly name: string
 
   @Column({ unique: true, name: 'email' })
-  email: string
+  public readonly email: string
 
   @Column({ name: 'password' })
-  password: string
+  public readonly password: string
 
   @Column({ name: 'role' })
-  role: string
+  public readonly role: string
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date
+  public readonly createdAt: Date
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date
+  public readonly updatedAt: Date
 
   @ManyToOne(() => CompanyEntity, (company) => company.users)
   @JoinColumn({ name: 'company_id' })
-  company: CompanyEntity
+  public readonly company: CompanyEntity
 }

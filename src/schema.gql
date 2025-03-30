@@ -2,33 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProvisionDto {
-  id: String!
-  title: String!
-  type: String!
-  description: String
-  cover: String
-  url: String!
-  created_at: DateTime!
-  allow_download: Boolean!
-  is_embeddable: Boolean!
-  format: String
-  bytes: Int!
-  total_likes: Int!
-  metadata: JSONObject!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-"""
-The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSONObject
-
-type Companyy {
+type Company {
   id: String!
   name: String!
 }
@@ -38,30 +12,60 @@ type OutputFindAllUserDto {
   name: String!
   email: String!
   role: String!
-  company: Companyy
   createdAt: DateTime!
   updatedAt: DateTime!
+  company: Company
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type OutputFindOneUserDto {
   id: String!
   name: String!
   email: String!
   role: String!
-  company: Companyy
   createdAt: DateTime!
   updatedAt: DateTime!
+  company: Company
+}
+
+type OutputFindAllContentDto {
+  id: String!
+  title: String!
+  type: String!
+  description: String
+  cover: String
+  url: String!
+  company_id: String!
+  created_at: DateTime!
+  total_likes: Int!
+}
+
+type OutputFindOneContentDto {
+  id: String!
+  title: String!
+  type: String!
+  description: String
+  cover: String
+  url: String!
+  company_id: String!
+  created_at: DateTime!
+  total_likes: Int!
 }
 
 type Query {
-  provision(content_id: String!): ProvisionDto!
+  contents(input: InputFindAllContentDto): [OutputFindAllContentDto!]!
+  content(input: InputFindOneContentDto!): OutputFindOneContentDto!
   users(input: InputFindAllUserDto): [OutputFindAllUserDto!]!
   user(input: InputFindOneUserDto!): OutputFindOneUserDto!
 }
 
-input InputFindAllUserDto {
-  page: Float = 1
-  limit: Float = 10
+input InputFindAllContentDto {
+  page: Int = 1
+  limit: Int = 10
   sortDirection: SortDirection = ASC
 }
 
@@ -69,6 +73,16 @@ input InputFindAllUserDto {
 enum SortDirection {
   ASC
   DESC
+}
+
+input InputFindOneContentDto {
+  id: String!
+}
+
+input InputFindAllUserDto {
+  page: Int = 1
+  limit: Int = 10
+  sortDirection: SortDirection = ASC
 }
 
 input InputFindOneUserDto {

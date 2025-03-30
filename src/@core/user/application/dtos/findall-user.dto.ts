@@ -1,7 +1,7 @@
-import { Field, InputType, ObjectType, registerEnumType } from '@nestjs/graphql'
+import { Field, InputType, Int, ObjectType, registerEnumType } from '@nestjs/graphql'
 import { IsNumber, IsOptional } from 'class-validator'
 
-enum SortDirection {
+export enum SortDirection {
   ASC = 'ASC',
   DESC = 'DESC',
 }
@@ -13,12 +13,12 @@ registerEnumType(SortDirection, {
 
 @InputType()
 export class InputFindAllUserDto {
-  @Field(() => Number, { nullable: true })
+  @Field(() => Int, { nullable: true })
   @IsNumber()
   @IsOptional()
   public readonly page: number = 1
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Int, { nullable: true })
   @IsNumber()
   @IsOptional()
   public readonly limit: number = 10
@@ -29,7 +29,7 @@ export class InputFindAllUserDto {
 }
 
 @ObjectType()
-class Companyy {
+class Company {
   @Field(() => String)
   public readonly id: string
 
@@ -51,12 +51,12 @@ export class OutputFindAllUserDto {
   @Field(() => String)
   public readonly role: string
 
-  @Field(() => Companyy, { nullable: true })
-  public readonly company: Companyy
-
   @Field(() => Date)
   public readonly createdAt: Date
 
   @Field(() => Date)
   public readonly updatedAt: Date
+
+  @Field(() => Company, { nullable: true })
+  public readonly company: Company
 }
