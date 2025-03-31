@@ -4,9 +4,11 @@ import { FindOneContentUseCase } from '@core/content/application/usecases/findon
 import { Args, Query, Resolver } from '@nestjs/graphql'
 import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'
 import { AuthenticatedUser } from '@core/auth/presentation/decoractors/auth-user.decorator'
+import { Logger } from '@nestjs/common'
 
 @Resolver(() => Output)
 export class FindOneContentResolver implements IResolver<Input, Output> {
+  private readonly logger = new Logger(FindOneContentResolver.name)
   constructor(private readonly findOneContentUseCase: FindOneContentUseCase) {}
 
   @Query(() => Output, { name: 'content' })
@@ -15,7 +17,7 @@ export class FindOneContentResolver implements IResolver<Input, Output> {
     @AuthenticatedUser('id')
     authenticatedUserId: number,
   ): Promise<Output> {
-    console.log({ authenticatedUserId })
+    this.logger.log(`Provisioning content=${input.content_id} to user=${authenticatedUserId}`)
     return this.findOneContentUseCase.execute(input)
   }
 }
