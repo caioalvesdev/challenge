@@ -7,7 +7,7 @@ export class InputFindOneContentDto {
   @Field(() => String)
   @IsUUID()
   @IsNotEmpty()
-  public readonly id: string
+  public readonly content_id: string
 }
 
 @ObjectType()

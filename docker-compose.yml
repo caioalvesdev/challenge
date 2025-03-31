@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - ${APP_PORT}:3334
+      - ${APP_PORT}:3000
     volumes:
       - .:/app
     depends_on:

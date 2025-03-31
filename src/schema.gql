@@ -32,19 +32,35 @@ type OutputFindOneUserDto {
   company: Company
 }
 
-type OutputFindAllContentDto {
-  id: String!
-  title: String!
-  type: String!
-  description: String
-  cover: String
-  url: String!
-  company_id: String!
-  created_at: DateTime!
-  total_likes: Int!
+type ContentMetadata {
+  resolution: String
+  duration: Int
+  aspect_ratio: String
+  author: String
+  pages: Int
+  trusted: Boolean
+  words: Int
+  lines: Int
+  encrypted: Boolean
 }
 
-type OutputFindOneContentDto {
+type OutputContentDto {
+  id: String!
+  title: String!
+  cover: String
+  created_at: String!
+  description: String
+  total_likes: Float!
+  type: String!
+  url: String!
+  allow_download: Boolean!
+  is_embeddable: Boolean!
+  format: String
+  bytes: Float!
+  metadata: ContentMetadata!
+}
+
+type OutputFindAllContentDto {
   id: String!
   title: String!
   type: String!
@@ -58,7 +74,7 @@ type OutputFindOneContentDto {
 
 type Query {
   contents(input: InputFindAllContentDto): [OutputFindAllContentDto!]!
-  content(input: InputFindOneContentDto!): OutputFindOneContentDto!
+  content(input: InputFindOneContentDto!): OutputContentDto!
   users(input: InputFindAllUserDto): [OutputFindAllUserDto!]!
   user(input: InputFindOneUserDto!): OutputFindOneUserDto!
 }
@@ -76,7 +92,7 @@ enum SortDirection {
 }
 
 input InputFindOneContentDto {
-  id: String!
+  content_id: String!
 }
 
 input InputFindAllUserDto {

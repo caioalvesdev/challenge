@@ -1,7 +1,7 @@
-import {
-  InputFindOneContentDto as Input,
-  OutputFindOneContentDto as Output,
-} from '@core/content/application/dtos/findone-content.dto'
+import { InputFindOneContentDto as Input } from '@core/content/application/dtos/findone-content.dto'
+import { OutputContentDto as Output } from '@core/content/infrastructure/strategies/dtos/content.dto'
+import { ContentTypeEnum } from '@core/content/infrastructure/enums/content-type.enum'
+import { ContentFactory } from '@core/content/infrastructure/factories/content.factory'
 import { ContentTypeOrmRepository } from '@core/content/infrastructure/repositories/content.repository'
 import { Injectable } from '@nestjs/common'
 import { IUseCase } from '@shared/application/interfaces/usecase.interface'
@@ -11,6 +11,8 @@ export class FindOneContentUseCase implements IUseCase<Input, Output> {
   constructor(private readonly contentRepository: ContentTypeOrmRepository) {}
 
   public async execute(input: Input): Promise<Output> {
-    return this.contentRepository.findOne(input)
+    const data = await this.contentRepository.findOne(input)
+    const contentFactory = ContentFactory.build(data.type as ContentTypeEnum)
+    return contentFactory.process(data)
   }
 }

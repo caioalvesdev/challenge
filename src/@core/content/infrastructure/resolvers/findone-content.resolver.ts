@@ -1,7 +1,5 @@
-import {
-  InputFindOneContentDto as Input,
-  OutputFindOneContentDto as Output,
-} from '@core/content/application/dtos/findone-content.dto'
+import { InputFindOneContentDto as Input } from '@core/content/application/dtos/findone-content.dto'
+import { OutputContentDto as Output } from '@core/content/infrastructure/strategies/dtos/content.dto'
 import { FindOneContentUseCase } from '@core/content/application/usecases/findone-content.usecase'
 import { Args, Query, Resolver } from '@nestjs/graphql'
 import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'

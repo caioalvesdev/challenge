@@ -34,7 +34,7 @@ export class ContentTypeOrmRepository
     try {
       return await this.contentRepository.findOne({
         relations: ['company'],
-        where: { id: input.id },
+        where: { id: input.content_id },
       })
     } catch (error) {
       throw new InternalServerErrorException(error.message)

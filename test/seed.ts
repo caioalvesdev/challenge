@@ -114,6 +114,18 @@ export const seedDatabase = async (dataSource: DataSource) => {
         company: createdCompany1,
       }),
     ),
+    queryRunner.manager.save(
+      queryRunner.manager.create(Content, {
+        id: 'b472ebd1-3ff8-4501-9ed5-549df46d0eb1',
+        title: 'Receita de bolo de chocolate',
+        description: 'Um documento detalhado de como se fazer um bolo de chocolate delicioso',
+        url: 'http://localhost:3000/uploads/text1.txt',
+        total_likes: 0,
+        type: 'text',
+        cover: 'http://localhost:3000/uploads/text1-cover.jpg',
+        company: createdCompany2,
+      }),
+    ),
   ])
 
   console.info('Database seeded successfully.')
