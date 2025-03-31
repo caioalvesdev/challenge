@@ -16,8 +16,10 @@ export class FindOneContentResolver implements IResolver<Input, Output> {
     @Args('input') input: Input,
     @AuthenticatedUser('id')
     authenticatedUserId: number,
+    @AuthenticatedUser('companyId')
+    authenticatedCompanyId: string,
   ): Promise<Output> {
     this.logger.log(`Provisioning content=${input.content_id} to user=${authenticatedUserId}`)
-    return this.findOneContentUseCase.execute(input)
+    return this.findOneContentUseCase.execute({ ...input, companyId: authenticatedCompanyId })
   }
 }

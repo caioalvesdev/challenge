@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { DataSource } from 'typeorm'
 // import { AppDataSource } from 'src/database/data-source.database'
-import { Content } from 'src/content/entity'
-import { UserEntity } from '@core/user/domain/entities/user.entity'
 import { AppDataSource } from '@shared/config/typeorm.config'
-import * as process from 'node:process'
+import { UserEntity } from '@core/user/domain/entities/user.entity'
 import { CompanyEntity } from '@core/company/domain/entities/company.entity'
+import { ContentEntity } from '@core/content/domain/entities/content.entity'
+import * as process from 'node:process'
 
 export const seedDatabase = async (dataSource: DataSource) => {
   const queryRunner = dataSource.createQueryRunner()
@@ -39,7 +39,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
 
   await Promise.all([
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: '4372ebd1-2ee8-4501-9ed5-549df46d0eb0',
         title: 'Introdução à Cultura Tech',
         description: 'Uma imagem ilustrativa sobre a cultura de trabalho em equipe.',
@@ -51,7 +51,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: '26a42e72-cc93-44b3-acae-01537a36322b',
         title: 'Ambiente de Trabalho Moderno',
         description:
@@ -64,7 +64,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: '7acff1c5-4c43-4923-a323-d22a12573041',
         title: 'Guia de Boas Práticas em Desenvolvimento',
         description:
@@ -77,7 +77,7 @@ export const seedDatabase = async (dataSource: DataSource) => {
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: '3a5a94aa-17da-4e9a-b493-fe7e81294631',
         title: 'Manual de Arquitetura de Software',
         description:
@@ -90,20 +90,20 @@ export const seedDatabase = async (dataSource: DataSource) => {
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: '6969d6c7-40ea-4a3c-b635-d6546b971304',
         title: 'Plataforma de Aprendizado Online',
         description:
           'Acesse este link para cursos e treinamentos voltados para tecnologia e inovação.',
         url: 'https://learning.rocks',
-        cover: null,
+        cover: 'http://localhost:3000/uploads/pdf2-cover.jpg',
         type: 'link',
         total_likes: 8,
         company: createdCompany1,
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: 'd060ab17-c961-4de7-929f-a0d52aa3ecf4',
         title: 'Inteligência artificial',
         description: null,
@@ -115,15 +115,15 @@ export const seedDatabase = async (dataSource: DataSource) => {
       }),
     ),
     queryRunner.manager.save(
-      queryRunner.manager.create(Content, {
+      queryRunner.manager.create(ContentEntity, {
         id: 'b472ebd1-3ff8-4501-9ed5-549df46d0eb1',
         title: 'Receita de bolo de chocolate',
         description: 'Um documento detalhado de como se fazer um bolo de chocolate delicioso',
         url: 'http://localhost:3000/uploads/text1.txt',
-        total_likes: 0,
-        type: 'text',
         cover: 'http://localhost:3000/uploads/text1-cover.jpg',
-        company: createdCompany2,
+        type: 'text',
+        total_likes: 0,
+        company: createdCompany1,
       }),
     ),
   ])

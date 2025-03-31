@@ -21,13 +21,13 @@ export class ContentEntity {
   @Column({ name: 'type' })
   public readonly type: string
 
-  @Column({ name: 'description' })
+  @Column({ name: 'description', nullable: true })
   public readonly description?: string
 
   @Column({ name: 'url' })
   public readonly url: string
 
-  @Column({ name: 'cover' })
+  @Column({ name: 'cover', nullable: true })
   public readonly cover?: string
 
   @Column({ name: 'total_likes', type: 'int' })

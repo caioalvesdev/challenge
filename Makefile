@@ -1,4 +1,4 @@
-NAME=nestjs-app
+NAME=challenge-nestjs
 DOCKER_COMPOSE_CMD=sudo docker compose
 
 all: up

@@ -10,9 +10,9 @@ import { IUseCase } from '@shared/application/interfaces/usecase.interface'
 export class FindOneContentUseCase implements IUseCase<Input, Output> {
   constructor(private readonly contentRepository: ContentTypeOrmRepository) {}
 
-  public async execute(input: Input): Promise<Output> {
+  public async execute(input: Input & { companyId: string }): Promise<Output> {
     const data = await this.contentRepository.findOne(input)
-    const contentFactory = ContentFactory.build(data.type as ContentTypeEnum)
+    const contentFactory = ContentFactory.build(data?.type as ContentTypeEnum)
     return contentFactory.process(data)
   }
 }

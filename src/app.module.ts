@@ -29,7 +29,7 @@ import { RolesGuard } from '@core/auth/presentation/guards/roles.guard'
       useClass: AuthGuard,
     },
     {
-      provide: 'APP_GUARD',
+      provide: APP_GUARD,
       useClass: RolesGuard,
     },
   ],

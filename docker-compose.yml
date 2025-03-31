@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: challenge-db
     image: postgres:13
     restart: always
     environment:
@@ -12,6 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   redis:
+    container_name: challenge-redis
     image: redis:latest
     ports:
       - ${REDIS_PORT}:6379
@@ -31,6 +33,8 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - NODE_PATH=.
+    container_name: challenge-nestjs
 
 volumes:
   postgres_data:

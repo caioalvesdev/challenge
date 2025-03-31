@@ -8,6 +8,6 @@ export interface IFindOneContentRepository {
 }
 
 export namespace IFindOneContentRepository {
-  export type Input = InputFindOneContentDto
+  export type Input = InputFindOneContentDto & { companyId: string }
   export type Output = OutputFindOneContentDto
 }

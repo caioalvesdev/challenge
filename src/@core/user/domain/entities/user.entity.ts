@@ -35,6 +35,9 @@ export class UserEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   public readonly updatedAt: Date
 
+  @Column({ name: 'company_id' })
+  public readonly companyId: string
+
   @ManyToOne(() => CompanyEntity, (company) => company.users)
   @JoinColumn({ name: 'company_id' })
   public readonly company: CompanyEntity

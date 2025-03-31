@@ -32,10 +32,16 @@ export class ContentTypeOrmRepository
     input: IFindOneContentRepository.Input,
   ): Promise<IFindOneContentRepository.Output> {
     try {
-      return await this.contentRepository.findOne({
+      const output = await this.contentRepository.findOne({
         relations: ['company'],
-        where: { id: input.content_id },
+        where: { id: input.content_id, company_id: input.companyId },
       })
+
+      if (!output) {
+        throw new InternalServerErrorException('Content not found')
+      }
+
+      return output
     } catch (error) {
       throw new InternalServerErrorException(error.message)
     }

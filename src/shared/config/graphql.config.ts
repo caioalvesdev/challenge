@@ -5,6 +5,7 @@ import { join } from 'path'
 
 export const graphQLConfig: ApolloDriverConfig = {
   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+  context: ({ req }) => ({ req }),
   driver: ApolloDriver,
   introspection: true,
   playground: true,
