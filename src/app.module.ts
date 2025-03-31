@@ -9,8 +9,9 @@ import { UserModule } from '@core/user/user.module'
 import { CompanyModule } from '@core/company/company.module'
 import { ContentModule } from '@core/content/content.module'
 import { JwtModule } from '@nestjs/jwt'
-import { AuthenticationGuard } from '@core/auth/presentation/guards/authentication.guard'
+import { AuthGuard } from '@core/auth/presentation/guards/auth.guard'
 import { APP_GUARD } from '@nestjs/core'
+import { RolesGuard } from '@core/auth/presentation/guards/roles.guard'
 
 @Module({
   imports: [
@@ -25,7 +26,11 @@ import { APP_GUARD } from '@nestjs/core'
   providers: [
     {
       provide: APP_GUARD,
-      useClass: AuthenticationGuard,
+      useClass: AuthGuard,
+    },
+    {
+      provide: 'APP_GUARD',
+      useClass: RolesGuard,
     },
   ],
 })

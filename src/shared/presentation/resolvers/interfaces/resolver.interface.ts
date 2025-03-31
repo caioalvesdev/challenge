@@ -1,3 +1,3 @@
 export interface IResolver<INPUT = undefined, OUTPUT = unknown> {
-  handle(input?: INPUT): Promise<OUTPUT> | OUTPUT
+  handle(input?: INPUT, inputAlt?: undefined): Promise<OUTPUT> | OUTPUT
 }

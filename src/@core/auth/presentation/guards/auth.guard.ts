@@ -14,8 +14,8 @@ import { UserTypeOrmRepository } from '@core/user/infrastructure/repositories/ty
 import { InputFindOneUserDto } from '@core/user/application/dtos/findone-user.dto'
 
 @Injectable()
-export class AuthenticationGuard implements CanActivate {
-  private readonly logger = new Logger(AuthenticationGuard.name)
+export class AuthGuard implements CanActivate {
+  private readonly logger = new Logger(AuthGuard.name)
 
   constructor(
     private readonly jwtService: JwtService,

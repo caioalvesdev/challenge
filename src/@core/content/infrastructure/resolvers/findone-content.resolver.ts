@@ -3,13 +3,19 @@ import { OutputContentDto as Output } from '@core/content/infrastructure/strateg
 import { FindOneContentUseCase } from '@core/content/application/usecases/findone-content.usecase'
 import { Args, Query, Resolver } from '@nestjs/graphql'
 import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'
+import { AuthenticatedUser } from '@core/auth/presentation/decoractors/auth-user.decorator'
 
 @Resolver(() => Output)
 export class FindOneContentResolver implements IResolver<Input, Output> {
   constructor(private readonly findOneContentUseCase: FindOneContentUseCase) {}
 
   @Query(() => Output, { name: 'content' })
-  public async handle(@Args('input') input: Input): Promise<Output> {
+  public async handle(
+    @Args('input') input: Input,
+    @AuthenticatedUser('id')
+    authenticatedUserId: number,
+  ): Promise<Output> {
+    console.log({ authenticatedUserId })
     return this.findOneContentUseCase.execute(input)
   }
 }
