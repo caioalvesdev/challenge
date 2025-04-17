@@ -13,7 +13,6 @@ export class TextContentStrategy implements IContentStrategy {
   public async process(content: InputContentDto): Promise<OutputContentDto> {
     const signedUrl = new SignedUrl({ url: content.url })
 
-    // Determina o caminho do arquivo local
     const filePath = path.join(
       process.cwd(),
       'static',
@@ -27,9 +26,9 @@ export class TextContentStrategy implements IContentStrategy {
 
     const fileContent = fs.readFileSync(filePath, 'utf-8')
 
-    const wordCount = fileContent.split(/\s+/).length // Número de palavras
-    const lineCount = fileContent.split('\n').length // Número de linhas
-    const size = fs.statSync(filePath).size // Tamanho do arquivo em bytes
+    const wordCount = fileContent.split(/\s+/).length
+    const lineCount = fileContent.split('\n').length
+    const size = fs.statSync(filePath).size
 
     return new OutputContentDto({
       id: content.id,

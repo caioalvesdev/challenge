@@ -7,10 +7,17 @@ import {
 import { IContentStrategy } from '@core/content/infrastructure/strategies/interfaces/content.strategy'
 import { SignedUrl } from '@shared/domain/value-objects/signed-url.vo'
 
-import * as path from 'path'
 import * as fs from 'fs'
+import * as path from 'path'
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const sharp = require('sharp')
+
+type GetImageInfo = {
+  width: number
+  height: number
+  resolution: string
+  aspectRatio: string
+}
 
 export class ImageContentStrategy implements IContentStrategy {
   private readonly expirationTime = 3600 // 1 hour
@@ -45,7 +52,7 @@ export class ImageContentStrategy implements IContentStrategy {
     })
   }
 
-  private async getImageInfo(filePath: string) {
+  private async getImageInfo(filePath: string): Promise<GetImageInfo> {
     const metadata = await sharp(filePath).metadata()
     const getAspectRatio = (width: number, height: number) => {
       const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))

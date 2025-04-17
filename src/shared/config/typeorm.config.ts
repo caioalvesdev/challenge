@@ -26,7 +26,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
 }
 
 export const AppDataSource = new DataSource({
-  type: 'postgres', // Certifique-se de ajustar o tipo de banco de dados
+  type: 'postgres',
   host: process.env.DATABASE_HOST || 'db',
   port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
   username: process.env.DATABASE_USERNAME || 'postgres',
@@ -34,6 +34,6 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE_NAME || 'challenge',
   entities: [__dirname + '/../../**/*.entity.{ts,js}'],
   migrations: [__dirname + '/migration/*.{ts,js}'],
-  synchronize: true, // Certifique-se de desativar em produção
+  synchronize: true,
   logging: true,
 })

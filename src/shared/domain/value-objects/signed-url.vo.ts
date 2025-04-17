@@ -31,7 +31,7 @@ export class SignedUrl {
 
   private generateSignedUrl(expirationTime: number = 3600): string {
     const expires = Math.floor(Date.now() / 1000) + expirationTime
-    const signature = Math.random().toString(36).substring(7) // Exemplo de assinatura
+    const signature = Math.random().toString(36).substring(7)
     return `${this.options.url}?expires=${expires}&signature=${signature}`
   }
 
