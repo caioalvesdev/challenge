@@ -1,12 +1,13 @@
+import { INestApplication, Logger, ValidationPipe } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { NestFactory } from '@nestjs/core'
 import * as express from 'express'
 import { join } from 'path'
-import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import { INestApplication, ValidationPipe } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+  const logger = new Logger(bootstrap.name)
 
   app.use('/uploads', express.static(join(__dirname, '..', 'static')))
 
@@ -16,7 +17,7 @@ async function bootstrap() {
 
   const port = configService.get<string>('appConfig.port')
 
-  await app.listen(port)
+  await app.listen(port, () => logger.log(`Server running on port ${port}`))
 }
 bootstrap()
 
