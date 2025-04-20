@@ -9,7 +9,7 @@ import { Repository } from 'typeorm'
 export class ContentTypeOrmRepository
   implements IFindAllContentRepository, IFindOneContentRepository
 {
-  constructor(
+  public constructor(
     @InjectRepository(ContentEntity)
     private readonly contentRepository: Repository<ContentEntity>,
   ) {}

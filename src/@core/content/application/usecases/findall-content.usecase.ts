@@ -8,7 +8,7 @@ import { IUseCase } from '@shared/application/interfaces/usecase.interface'
 
 @Injectable()
 export class FindAllContentUseCase implements IUseCase<Input, Output[]> {
-  constructor(private readonly contentRepository: ContentTypeOrmRepository) {}
+  public constructor(private readonly contentRepository: ContentTypeOrmRepository) {}
 
   public async execute(input: Input): Promise<Output[]> {
     return this.contentRepository.findAll(input)

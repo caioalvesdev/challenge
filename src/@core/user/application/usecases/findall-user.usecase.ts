@@ -8,7 +8,7 @@ import { IUseCase } from '@shared/application/interfaces/usecase.interface'
 
 @Injectable()
 export class FindAllUserUseCase implements IUseCase<Input, Output[]> {
-  constructor(private readonly userRepository: UserTypeOrmRepository) {}
+  public constructor(private readonly userRepository: UserTypeOrmRepository) {}
 
   public async execute(input: Input): Promise<Output[]> {
     return this.userRepository.findAll(input)

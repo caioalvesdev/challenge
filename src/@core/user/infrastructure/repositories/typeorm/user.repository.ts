@@ -1,13 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
 import { IFindAllUserRepository } from '@core/user/domain/@repositories/findall-user.repository.interface'
 import { IFindOneUserRepository } from '@core/user/domain/@repositories/findone-user.repository.interface'
 import { UserEntity } from '@core/user/domain/entities/user.entity'
+import { Injectable, InternalServerErrorException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
 @Injectable()
 export class UserTypeOrmRepository implements IFindAllUserRepository, IFindOneUserRepository {
-  constructor(
+  public constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
   ) {}

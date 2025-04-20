@@ -1,15 +1,15 @@
-import { Args, Query, Resolver } from '@nestjs/graphql'
+import { Roles } from '@core/auth/presentation/decoractors/roles.decorator'
 import {
   InputFindAllUserDto as Input,
   OutputFindAllUserDto as Output,
 } from '@core/user/application/dtos/findall-user.dto'
 import { FindAllUserUseCase } from '@core/user/application/usecases/findall-user.usecase'
+import { Args, Query, Resolver } from '@nestjs/graphql'
 import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.interface'
-import { Roles } from '@core/auth/presentation/decoractors/roles.decorator'
 
 @Resolver(() => Input)
 export class FindAllUserResolver implements IResolver<Input, Output[]> {
-  constructor(private readonly findAllUserUseCase: FindAllUserUseCase) {}
+  public constructor(private readonly findAllUserUseCase: FindAllUserUseCase) {}
 
   @Query(() => [Output], { name: 'users' })
   @Roles('admin')

@@ -8,7 +8,7 @@ import { IResolver } from '@shared/presentation/resolvers/interfaces/resolver.in
 
 @Resolver(() => Output)
 export class FindAllContentResolver implements IResolver<Input, Output[]> {
-  constructor(private readonly findAllContentUseCase: FindAllContentUseCase) {}
+  public constructor(private readonly findAllContentUseCase: FindAllContentUseCase) {}
 
   @Query(() => [Output], { name: 'contents' })
   public async handle(@Args('input', { nullable: true }) input: Input): Promise<Output[]> {

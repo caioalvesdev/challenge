@@ -17,7 +17,7 @@ import { InputFindOneUserDto } from '@core/user/application/dtos/findone-user.dt
 export class AuthGuard implements CanActivate {
   private readonly logger = new Logger(AuthGuard.name)
 
-  constructor(
+  public constructor(
     private readonly jwtService: JwtService,
     private readonly reflector: Reflector,
     private readonly userRepository: UserTypeOrmRepository,
