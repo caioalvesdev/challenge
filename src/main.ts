@@ -1,6 +1,7 @@
-import { INestApplication, Logger, ValidationPipe } from '@nestjs/common'
+import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
+import { configureValidationPipe } from '@shared/config/validationpipe.config'
 import * as express from 'express'
 import { join } from 'path'
 import { AppModule } from './app.module'
@@ -16,20 +17,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService)
 
   const port = configService.get<string>('appConfig.port')
-
   await app.listen(port, () => logger.log(`Server running on port ${port}`))
 }
-bootstrap()
 
-function configureValidationPipe(app: INestApplication): void {
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-      transformOptions: {
-        enableImplicitConversion: true,
-      },
-    }),
-  )
-}
+bootstrap()
